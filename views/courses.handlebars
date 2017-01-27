@@ -1,113 +1,27 @@
 <main class="mn-inner container">
-        <div class="row">
-          <div class="col s12">
-          <div class="page-title">Offered Courses</div>
-          </div>
-          <div class="col s12">
-            <div class="grid" style="position: relative; height: 2330px;">
-              <!-- item 1 -->
-              <div class="grid-item" style="position: absolute; left: 0px; top: 0px;">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="assets/images/card-image.jpg" alt="">
-                    <span class="card-title">Image Card</span>
-                  </div>
-                  <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                      I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action blue-link">
-                      <a href="#">This is a link</a>
-                    </div>
-                  </div>
-              </div>
-              <!-- end item 1 -->
-              <!-- item 2 -->
-              <div class="grid-item" style="position: absolute; left: 325px; top: 0px;">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="assets/images/card-image.jpg" alt="">
-                    <span class="card-title">Image Card</span>
-                  </div>
-                  <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                      I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#" class="blue-link">This is a link</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- end item 2 -->
-                <!-- item 3 -->
-                <div class="grid-item" style="position: absolute; left: 650px; top: 0px;">
-                  <div class="card">
-                  <div class="card-image">
-                    <img src="assets/images/card-image.jpg" alt="">
-                    <span class="card-title">Image Card</span>
-                  </div>
-                  <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                      I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#">This is a link</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- end item 3 -->
-                <!-- item 4 -->
-                <div class="grid-item" style="position: absolute; left: 0px; top: 406px;">
-                  <div class="card">
-                  <div class="card-image">
-                    <img src="assets/images/card-image.jpg" alt="">
-                    <span class="card-title">Image Card</span>
-                  </div>
-                  <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                      I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#">This is a link</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- end item 4 -->
-                <!-- item 5 -->
-                <div class="grid-item" style="position: absolute; left: 325px; top: 406px;">
-                  <div class="card">
-                  <div class="card-image">
-                    <img src="assets/images/card-image.jpg" alt="">
-                    <span class="card-title">Image Card</span>
-                  </div>
-                  <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                      I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#" class="blue-link">This is a link</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- end item 5 -->
-                <!-- item 6 -->
-                <div class="grid-item" style="position: absolute; left: 650px; top: 406px;">
-                  <div class="card">
-                  <div class="card-image">
-                    <img src="assets/images/card-image.jpg" alt="">
-                    <span class="card-title">Image Card</span>
-                  </div>
-                  <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                      I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#">This is a link</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- end item 6 -->
-              </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="page-title">Offered Courses</div>
+    </div>
+    <div class="col s12">
+      <div class="grid" style="position: relative; height: 2330px;">
+        {{#each classes}}
+        <div class="grid-item" style="position: absolute; left: 0px; top: 0px;">
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/images/card-image.jpg" alt="">
+              <span class="card-title">{{title}}</span>
+            </div>
+            <div class="card-content">
+              <p>{{description}}</p>
+            </div>
+            <div class="card-action blue-link">
+              <a href="/classes/{{id}}/details">View Class</a>
             </div>
           </div>
-        </main>
+        </div>
+        <!-- end item 1 -->
+      </div>
+    </div>
+  </div>
+</main>

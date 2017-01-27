@@ -23,5 +23,8 @@
     "connect-flash": "*",
     "express-messages": "*",
     "express-validator": "*"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+var Class = require('../models/class');
+
+/* GET courses page. */
 router.get('/', function(req, res, next) {
-  res.render('courses', { title: 'Courses' });
+  Class.getClasses( function (err, courses) {
+    if(err) throw err;
+    res.render('courses', { classes: courses });
+  }, 3);
 });
 
 module.exports = router;

@@ -6,21 +6,21 @@
     <div class="col s12">
       <div class="grid" style="position: relative; height: 2330px;">
         {{#each classes}}
-        <div class="grid-item" style="position: absolute; left: 0px; top: 0px;">
-          <div class="card">
+        <div class="grid-item course">
+          <div class="card hoverable">
             <div class="card-image">
-              <img src="assets/images/card-image.jpg" alt="">
+              <img src="/assets/images/card-image.jpg" alt="">
               <span class="card-title">{{title}}</span>
             </div>
-            <div class="card-content">
+            <div class="card-content course-height">
               <p>{{description}}</p>
             </div>
             <div class="card-action blue-link">
-              <a href="/classes/{{id}}/details">View Class</a>
+              <a href="/classes/{{_id}}/details">Class Details</a>
             </div>
           </div>
         </div>
-        <!-- end item 1 -->
+        {{/each}}
       </div>
     </div>
   </div>

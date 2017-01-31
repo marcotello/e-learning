@@ -1,0 +1,155 @@
+<main class="mn-inner container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">{{class.title}}</span>
+          <p>{{class.description}}<br><br><small>{{class.instructor}}</small></p><br>
+          <div class="slider" style="height: 440px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <ul class="slides" style="height: 400px;">
+              <li class="" style="opacity: 0; transform: translateX(0px) translateY(0px);">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" style="background-image: url(&quot;/assets/images/card-image.jpg&quot;);">
+                <div class="caption center-align" style="opacity: 0; transform: translateY(-100px) translateX(0px);">
+                  <h3>This is our big Tagline!</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+              </li>
+              <li class="" style="opacity: 0; transform: translateX(0px) translateY(0px);">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" style="background-image: url(&quot;/assets/images/card-image2.jpg&quot;);">
+                <div class="caption left-align" style="opacity: 0; transform: translateX(-100px) translateY(0px);">
+                  <h3>Left Aligned Caption</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+              </li>
+              <li class="" style="opacity: 0; transform: translateX(0px) translateY(0px);">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" style="background-image: url(&quot;/assets/images/card-image3.jpg&quot;);">
+                <div class="caption right-align" style="opacity: 0; transform: translateX(100px) translateY(0px);">
+                  <h3>Right Aligned Caption</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+              </li>
+              <li class="active" style="opacity: 1; transform: translateX(0px) translateY(0px);">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" style="background-image: url(&quot;/assets/images/card-image5.jpg&quot;);">
+                <div class="caption center-align" style="opacity: 1; transform: translateY(0px) translateX(0px);">
+                  <h3>This is our big Tagline!</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+              </li>
+            </ul>
+            <ul class="indicators"><li class="indicator-item"></li><li class="indicator-item"></li><li class="indicator-item"></li><li class="indicator-item active"></li></ul></div>
+          </div>
+          <div class="card-action">
+            <div class="row">
+              <div class="col s6 left-align">
+                  {{#if user}}
+                  <form id="classRegForm" method="post" action="/students/classes/register">
+                    <input type="hidden" name="student_id" value="{{user._id}}">
+                    <input type="hidden" name="class_id" value="{{class._id}}">
+                    <input type="hidden" name="class_title" value="{{class.title}}">
+                    <input type="submit" name="button" value="Register For This Course" class="waves-effect waves-light btn light-blue darken-4">
+                  </form>
+                  {{else}}
+                  <a class="waves-effect waves-red btn-flat m-b-xs">You must be registered to take this course.</a>
+                  {{/if}}
+              </div>
+              <div class="col s6 right-align">
+                  <a class="waves-effect waves-light btn red m-b-xs" href="/classes">Back</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    {{#if class.lessons}}
+    <div id="lessons-section">
+      <div class="row">
+        <div class="col s12">
+          <div class="page-title">Lessons</div>
+        </div>
+        <div class="col s12">
+          <section id="cd-timeline" class="cd-container">
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-picture">
+                <img src="/assets/plugins/vertical-timeline/img/cd-icon-picture.svg" alt="Picture">
+              </div> <!-- cd-timeline-img -->
+
+              <div class="cd-timeline-content">
+                <h2>Title of section 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                <a href="#0" class="waves-effect waves-blue btn-flat">Read more</a>
+                <span class="cd-date">Jan 14</span>
+              </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-movie">
+                <img src="/assets/plugins/vertical-timeline/img/cd-icon-movie.svg" alt="Movie">
+              </div> <!-- cd-timeline-img -->
+
+              <div class="cd-timeline-content">
+                <h2>Title of section 2</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+                <a href="#0" class="waves-effect waves-blue btn-flat">Read more</a>
+                <span class="cd-date">Jan 18</span>
+              </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-picture">
+                <img src="/assets/plugins/vertical-timeline/img/cd-icon-picture.svg" alt="Picture">
+              </div> <!-- cd-timeline-img -->
+
+              <div class="cd-timeline-content">
+                <h2>Title of section 3</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
+                <a href="#0" class="waves-effect waves-blue btn-flat">Read more</a>
+                <span class="cd-date">Jan 24</span>
+              </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-location is-hidden">
+                <img src="/assets/plugins/vertical-timeline/img/cd-icon-location.svg" alt="Location">
+              </div> <!-- cd-timeline-img -->
+
+              <div class="cd-timeline-content is-hidden">
+                <h2>Title of section 4</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                <a href="#0" class="waves-effect waves-blue btn-flat">Read more</a>
+                <span class="cd-date">Feb 14</span>
+              </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-location is-hidden">
+                <img src="/assets/plugins/vertical-timeline/img/cd-icon-location.svg" alt="Location">
+              </div> <!-- cd-timeline-img -->
+
+              <div class="cd-timeline-content is-hidden">
+                <h2>Title of section 5</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
+                <a href="#0" class="waves-effect waves-blue btn-flat">Read more</a>
+                <span class="cd-date">Feb 18</span>
+              </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-movie is-hidden">
+                <img src="/assets/plugins/vertical-timeline/img/cd-icon-movie.svg" alt="Movie">
+              </div> <!-- cd-timeline-img -->
+
+              <div class="cd-timeline-content is-hidden">
+                <h2>Final Section</h2>
+                <p>This is the content of the last section</p>
+                <span class="cd-date">Feb 26</span>
+              </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+          </section> <!-- cd-timeline -->
+
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </main>

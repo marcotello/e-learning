@@ -4,8 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var handlebars = require('express-handlebars');
-var validator = require('express-validator');
+var exphbs = require('express-handlebars');
+var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
@@ -18,14 +18,26 @@ var db = mongoose.connection;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var courses = require('./routes/courses');
+var classes = require('./routes/classes');
 
 var app = express();
 
+// app.locals.ip = process.env.IP || "http://localhost";
+// app.locals.port = process.env.PORT || 3000;
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', handlebars({defaultLayout: 'layout'}));
+// app.engine('handlebars', handlebars({defaultLayout: 'layout'}));
+app.engine('handlebars', exphbs({defaultLayout:'layout'}));
 app.set('view engine', 'handlebars');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Express session
 app.use(session({
@@ -38,30 +50,21 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Express validator
-app.use(validator({
+// Express Validator
+app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
-    var namespace = param.split('.'),
-    root = namespace.shift(),
-    formParam = root;
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
 
     while(namespace.length) {
       formParam += '[' + namespace.shift() + ']';
     }
-
     return {
-      param: formParam,
-      msg: msg,
-      value: value
-    }
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
   }
 }));
 
@@ -75,7 +78,8 @@ app.use(function (req, res, next){
 });
 
 app.use('/', index);
-app.use('/courses', courses);
+// app.use('/', routes);
+app.use('/classes', classes);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -85,16 +89,28 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// error handlers
 
-  // render the error page
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      error: err.message
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+    error: err.message
+  });
 });
+
 
 module.exports = app;
 

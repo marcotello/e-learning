@@ -17,61 +17,71 @@
             </div>
             {{/if}}
             <div class="row">
-              <form class="col s12" method="post" action="/users/register">
+              <form id="regForm" class="col s12" method="post" action="/users/register">
+                <div class="row">
+                  <div class="col s6 right-align">
+                      <input name="group1" type="radio" id="student" value="student" checked="true">
+                      <label for="student">Student</label>
+                  </div>
+                  <div class="col s6">
+                      <input name="group1" type="radio" id="instructor" value="instructor">
+                      <label for="instructor">Instructor</label>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="name" type="text" class="validate">
+                    <input type="text" name="name" class="validate" value="{{name}}">
                     <label for="name">First Name</label>
                   </div>
                   <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="lastName" type="tel" class="validate">
+                    <input type="text" name="lastName" class="validate" value="{{lastName}}">
                     <label for="lastName">LastName</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
-                    <input id="email" type="email" class="validate">
+                    <input type="email" name="email" class="validate" value="{{email}}">
                     <label for="email">Email</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
-                    <input id="email2" type="email" class="validate">
+                    <input type="email" name="email2" class="validate" value="{{email2}}">
                     <label for="email2">Confirm Email</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <i class="material-icons prefix">room</i>
-                    <input id="address" type="text">
+                    <input type="text" name="address" value="{{address}}">
                     <label for="address">Address</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s6">
                     <i class="material-icons prefix">my_location</i>
-                    <input id="city" type="text">
+                    <input type="text" name="city" value="{{city}}">
                     <label for="city">City</label>
                   </div>
                   <div class="input-field col s6">
                     <i class="material-icons prefix">language</i>
-                    <input id="state" type="text">
+                    <input type="text" name="state" value="{{state}}">
                     <label for="state">State</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s6">
                     <i class="material-icons prefix">lock_outline</i>
-                    <input id="password" type="text">
+                    <input type="password" name="password" value="{{password}}">
                     <label for="password">Password</label>
                   </div>
                   <div class="input-field col s6">
                     <i class="material-icons prefix">lock</i>
-                    <input id="password2" type="text">
+                    <input type="password" name="password2" value="{{password2}}">
                     <label for="password2">Confirm Password</label>
                   </div>
                 </div>

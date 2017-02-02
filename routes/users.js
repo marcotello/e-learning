@@ -20,7 +20,9 @@ router.get('/register', function(req, res, next) {
 // Register User
 router.post('/register', function(req, res, next) {
 
-  console.log(`Name ${req.body.name}`);
+  console.log('Student: ' + req.body.group1);
+
+  // console.log('Este es el request: ', req);
 
   // Get Form values
   var name = req.body.name;
@@ -32,6 +34,7 @@ router.post('/register', function(req, res, next) {
   var state = req.body.state;
   var password = req.body.password;
   var password2 = req.body.password2;
+  var student = req.body.group1;
   //var type = req.body.type;
 
   // Form validation

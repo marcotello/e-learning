@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+var async = require('async');
 
 // User Schema
 var UserSchema = mongoose.Schema({
@@ -40,7 +41,7 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
 }
 
 // Create a new Student
-module.exports.savesStudent = function (newUser, newStudent, callback) {
+module.exports.saveStudent = function (newUser, newStudent, callback) {
   bcrypt.hash(newUser.password, 10, function (err, hash) {
     if(err) throw err;
     // Set hash
@@ -51,12 +52,12 @@ module.exports.savesStudent = function (newUser, newStudent, callback) {
 }
 
 //  Create Instructor user
-module.exports.savesStudent = function (newUser, newInstructor, callback) {
+module.exports.saveInstructor = function (newUser, newInstructor, callback) {
   bcrypt.hash(newUser.password, 10, function (err, hash) {
     if(err) throw err;
     // Set hash
     newUser.password = hash;
-    console.log('Student is beign saved');
+    console.log('Instructor is beign saved');
     async.parallel([newUser.save, newInstructor.save], callback);
   });
 }

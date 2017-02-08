@@ -7,10 +7,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
 // Include Student Model
-var User = require('../models/student');
+var Student = require('../models/student');
 
 // Include Instructor Model
-var User = require('../models/instructor');
+var Instructor = require('../models/instructor');
 
 /* User Register */
 router.get('/register', function(req, res, next) {
@@ -19,8 +19,6 @@ router.get('/register', function(req, res, next) {
 
 // Register User
 router.post('/register', function(req, res, next) {
-
-  console.log('Student: ' + req.body.group1);
 
   // console.log('Este es el request: ', req);
 
@@ -35,7 +33,7 @@ router.post('/register', function(req, res, next) {
   var password = req.body.password;
   var password2 = req.body.password2;
   var student = req.body.group1;
-  //var type = req.body.type;
+  var type = req.body.group1;
 
   // Form validation
   req.checkBody('name', 'Name is required').notEmpty();
@@ -56,18 +54,61 @@ router.post('/register', function(req, res, next) {
   }else {
     var newUser = new User({
       email: email,
-      username: username,
+      username: email,
       password: password,
       type:type
     });
 
     if(type === 'student') {
-      console.log('Is student');
-    } else {
-      console.log('Is instructor');
-    }
+      console.log('Registering student...');
 
-    res.render('users/account');
+      var newStudent = new Student ({
+        first_name: name,
+        last_name: lastName,
+        address: [{
+          street_address: address,
+          city: city,
+          state: state
+        }],
+        email: email,
+        username: email
+      });
+
+      User.saveStudent(newUser, newStudent, function () {
+        console.log('Student Created');
+      });
+
+      var account = {
+        user: newUser,
+        profile: newStudent
+      };
+
+      var completeAddress = newStudent.address[0];
+
+      console.log('Direccion: ' + completeAddress.street_address);
+
+      res.render('users/account', { account: account });
+
+    } else {
+      console.log('Registering instructor...');
+      var newInstructor = new Instructor({
+        first_name: name,
+        last_name: lastName,
+        address: [{
+          street_address: address,
+          city: city,
+          state: state
+        }],
+        email: email,
+        username: email
+      });
+
+      User.saveInstructor(newUser, newInstructor, function () {
+        console.log('Instructor Created');
+      });
+
+      res.render('users/account', { account: account });
+    }
   }
 });
 

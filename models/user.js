@@ -22,13 +22,13 @@ var UserSchema = mongoose.Schema({
 var User = module.exports = mongoose.model('User', UserSchema);
 
 // Get a single users by ID
-module.exportsgetUserById = function (id, callback) {
+module.exports.getUserById = function (id, callback) {
   User.findById(id, callback);
 }
 
 // Get user by username
 module.exports.getUserByUsername = function (username, callback) {
-  var quesry = {username: username};
+  var query = {username: username};
   User.findOne(query, callback);
 }
 

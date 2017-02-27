@@ -90,11 +90,49 @@
           </div>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/classes"><i class="tiny material-icons right">work</i>Offered Courses</a></li>
-            <li><a href="/users/login"><i class="tiny material-icons right">input</i>Sign In</a></li> 
+            {{#if user}}
+            <li><a href="/{{type}}s/classes"><i class="tiny material-icons right">input</i>My Classes</a></li>
+            <li><a href="/users/logout"><i class="tiny material-icons right">perm_identity</i>Logout</a></li>
+            {{else}}
+            <li><a href="/users/login"><i class="tiny material-icons right">input</i>Sign In</a></li>
             <li><a href="/users/register"><i class="tiny material-icons right">perm_identity</i>Sign Up</a></li>
+            {{/if}}
             <!-- <li><a href="#"><i class="tiny material-icons right">work</i>My Courses</a></li>
             <li><a href="#"><i class="large material-icons right">person_pin</i>My Account</a></li> -->
           </ul>
         </div>
       </nav>
     </header>
+    {{#if success_msg}}
+    <main class="container center-align">
+      <div class="valign">
+        <div class="row">
+          <div class="col s12">
+            <div class="success_msg">Success MSG: {{success_msg}}</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{/if}}
+    {{#if error_msg}}
+    <main class="container center-align">
+      <div class="valign">
+        <div class="row">
+          <div class="col s12">
+            <div class="error_msg">Error MSG: {{error_msg}}</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{/if}}
+    {{#if error}}
+    <main class="container center-align">
+      <div class="valign">
+        <div class="row">
+          <div class="col s12">
+            <div class="error">Error: {{error}}</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{/if}}
